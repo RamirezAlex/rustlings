@@ -1,8 +1,6 @@
 // iterators4.rs
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
     // Do not use:
@@ -13,6 +11,31 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+
+    // -- Recursion
+    // if num == 0 {
+    //     1
+    // } else {
+    //     num * factorial(num - 1)
+    // }
+
+    // -- Imperative
+    // let mut fact: u64 = 1;
+    // while num > 1 {
+    //     fact *= num;
+    //     num -= 1
+    // }
+    // fact
+
+    // -- How I come out with this??? :D
+    // let factorial = (1..=num).rev().reduce(|fact, n| fact * n);
+
+    // match factorial {
+    //    Some(f) => f,
+    //    None => 1,
+    // }
+
+    (1..=num).product()
 }
 
 #[cfg(test)]
@@ -36,5 +59,10 @@ mod tests {
     #[test]
     fn factorial_of_4() {
         assert_eq!(24, factorial(4));
+    }
+
+    #[test]
+    fn factorial_of_8() {
+        assert_eq!(40320, factorial(8));
     }
 }
